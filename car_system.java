@@ -4,18 +4,18 @@ import java.util.Scanner;
 
 public class car_system {
     public static void main(String args[]) {
-        String url = "jdbc:mysql://localhost:3306/car_rental_system";
-        String password = "@#aditya2006";
-        String username = "root";
+        String url = "jdbc:mysql://localhost:3306/car_rental_system";// your database url with your table name.
+        String password = "@#aditya2006"; // your password
+        String username = "root"; // your username
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver"); // use for checking your database connectivity with program...
         } catch (ClassNotFoundException e) {
-            System.out.println("error at drivers.");
+            System.out.println("error at connecting drivers.");
         }
         Scanner sc = new Scanner(System.in);
         try {
 
-            Connection cn = DriverManager.getConnection(url, username, password);
+            Connection cn = DriverManager.getConnection(url, username, password);   // build your connection with database
             System.out.println();
             while (true) {
                 System.out.println();
@@ -50,6 +50,7 @@ public class car_system {
             System.out.println("error at connection.");
         }
     }
+    
     public static void returnAcar(Connection cn,Scanner sc) {
         System.out.println();
         System.out.println("*-*-*-* welcome to return car section *-*-*- ");
@@ -81,6 +82,7 @@ public class car_system {
             System.out.println("this car not found!!!!!!!!!!!");
         }
     }
+    
     public static boolean carExistsInUserTable(Connection cn,String car_id) {
         String query = "select * from user_info where id_car = ?;";
         try {
@@ -156,6 +158,7 @@ public class car_system {
             System.out.println("Sorry !!!\ncars are not available!!!!!!");
         }
     }
+    
     public static void addCar(Connection cn,Scanner sc) {
         System.out.println();
         System.out.println("*-*-*- section of adding Car*-*-*- ");
